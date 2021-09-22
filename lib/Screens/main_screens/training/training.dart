@@ -3,7 +3,6 @@ import 'package:coach_app/Screens/main_screens/home/HomePage.dart';
 import 'package:coach_app/Screens/main_screens/training/training2.dart';
 import 'package:flutter/material.dart';
 
-
 import '../../../custom_icons_icons.dart';
 
 class Training extends StatelessWidget {
