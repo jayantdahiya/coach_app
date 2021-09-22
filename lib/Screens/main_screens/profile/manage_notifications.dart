@@ -1,16 +1,54 @@
-import 'package:coach_app/Screens/main_screens/profile/gallery.dart';
-import 'package:coach_app/Screens/main_screens/profile/plan.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_switch/flutter_switch.dart';
 
-import 'admindialog.dart';
+import '../../../custom_icons_icons.dart';
+
 
 bool isChecked = false;
+bool isChecked1 = false;
+bool isChecked2 = false;
 
 
-class AdminNotify extends StatelessWidget {
-  const AdminNotify({Key? key}) : super(key: key);
+class ManageNotifications extends StatefulWidget {
+  const ManageNotifications({Key? key}) : super(key: key);
+
+  @override
+  State<ManageNotifications> createState() => _ManageNotificationsState();
+}
+
+class _ManageNotificationsState extends State<ManageNotifications> {
+  String _selectedTime = "02:00 am";
+  String _selectedTime2 = "08:00 am";
+  String _selectedTime3 = "02:00 am";
+
+  Future<void> _show() async {
+    final TimeOfDay? result =
+    await showTimePicker(context: context, initialTime: TimeOfDay.now());
+    if (result != null) {
+      setState(() {
+        _selectedTime = result.format(context);
+      });
+    }
+  }
+  Future<void> _show2() async {
+    final TimeOfDay? result =
+    await showTimePicker(context: context, initialTime: TimeOfDay.now());
+    if (result != null) {
+      setState(() {
+        _selectedTime2 = result.format(context);
+      });
+    }
+  }
+  Future<void> _show3() async {
+    final TimeOfDay? result =
+    await showTimePicker(context: context, initialTime: TimeOfDay.now());
+    if (result != null) {
+      setState(() {
+        _selectedTime3 = result.format(context);
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -19,11 +57,38 @@ class AdminNotify extends StatelessWidget {
         elevation: 0,
         backgroundColor: Colors.white,
         automaticallyImplyLeading: false,
-        title: Container(
-            alignment: Alignment.center,
-            child: Image.asset("assets/appbar.png",
-            width: MediaQuery.of(context).size.width*0.5,
-            height: MediaQuery.of(context).size.height*0.05,),
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Stack(
+              children: [
+                Text(
+                  'COACH APP',
+                  style: TextStyle(
+                      fontSize: 32,
+                      fontWeight: FontWeight.w100,
+                      color: Colors.black,
+                      fontFamily: 'GeometricSlab'),
+                ),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(27, 13, 0, 0),
+                  child: Icon(
+                    CustomIcons.name,
+                    color: Color(0xff79dd72),
+                    size: 6,
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(88, 5, 0, 0),
+                  child: Icon(
+                    CustomIcons.flash,
+                    color: Color(0xff79dd72),
+                    size: 24,
+                  ),
+                ),
+              ],
+            ),
+          ],
         )
       ),
       body: Container(
@@ -31,39 +96,42 @@ class AdminNotify extends StatelessWidget {
           children: [
             SizedBox(height: 5,),
             Container(
-              child: Row(
-                children: [
-                  Container(
-                    padding: EdgeInsets.only(left: 20),
-                    child: InkWell(
-                      onTap: () {
-                        Navigator.of(context).pop();
-                      },
-                      child: Icon(
-                        Icons.arrow_back_ios,
-                        color: Colors.black,
-                        size: 25,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 18.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                      child: InkWell(
+                        onTap: () {
+                          Navigator.of(context).pop();
+                        },
+                        child: Icon(
+                          Icons.arrow_back_ios,
+                          color: Colors.black,
+                          size: 25,
+                        ),
                       ),
                     ),
-                  ),
-                  Container(
-                    padding: EdgeInsets.only(left: 70),
-                    child: Column(
-                      children: [
-                        Text("ADMINISTRAR",
-                        style: TextStyle(
-                          fontSize: 17,
-                          fontWeight: FontWeight.bold
-                        ),),
-                        Text("NOTIFICACIONES",
+                    Container(
+                      child: Column(
+                        children: [
+                          Text("ADMINISTRAR",
                           style: TextStyle(
-                              fontSize: 17,
-                              fontWeight: FontWeight.bold
-                          ),)
-                      ],
+                            fontSize: 17,
+                            fontWeight: FontWeight.bold
+                          ),),
+                          Text("NOTIFICACIONES",
+                            style: TextStyle(
+                                fontSize: 17,
+                                fontWeight: FontWeight.bold
+                            ),)
+                        ],
+                      ),
                     ),
-                  )
-                ],
+                    Container(),
+                  ],
+                ),
               ),
             ),
             Container(
@@ -105,7 +173,7 @@ class AdminNotify extends StatelessWidget {
                             //height: 30,
                             child: Container(
                               child: ElevatedButton(
-                                  onPressed: () {},
+                                  onPressed: _show,
                                   style: ElevatedButton.styleFrom(
                                       primary: Colors.white,
                                       shape: RoundedRectangleBorder(
@@ -116,7 +184,7 @@ class AdminNotify extends StatelessWidget {
                                         width: 2,
                                       )),
                                   child: Text(
-                                    "2:00 am",
+                                  _selectedTime,
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
                                         color: Colors.black,
@@ -133,9 +201,12 @@ class AdminNotify extends StatelessWidget {
                             toggleSize: 20.0,
                             borderRadius: 20.0,
                             activeColor: Colors.green,
-                            value: true,
+                            value: isChecked,
                             onToggle: (value) {
-                              print("click");
+                              print(value);
+                              setState(() {
+                                isChecked = value;
+                              });
                             },
                           ),
                         )
@@ -167,7 +238,7 @@ class AdminNotify extends StatelessWidget {
                                 //height: 30,
                                 child: Container(
                                   child: ElevatedButton(
-                                      onPressed: () {},
+                                      onPressed: _show2,
                                       style: ElevatedButton.styleFrom(
                                           primary: Colors.white,
                                           shape: RoundedRectangleBorder(
@@ -178,7 +249,7 @@ class AdminNotify extends StatelessWidget {
                                             width: 2,
                                           )),
                                       child: Text(
-                                        "8:00 am",
+                                        _selectedTime2,
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
                                             color: Colors.black,
@@ -195,9 +266,12 @@ class AdminNotify extends StatelessWidget {
                                   toggleSize: 20.0,
                                   borderRadius: 20.0,
                                   activeColor: Colors.green,
-                                  value: false,
+                                  value: isChecked1,
                                   onToggle: (value) {
-                                    print("click");
+                                    print(value);
+                                    setState(() {
+                                      isChecked1 = value;
+                                    });
                                   },
                                 ),
                               )
@@ -229,7 +303,7 @@ class AdminNotify extends StatelessWidget {
                                 //height: 30,
                                 child: Container(
                                   child: ElevatedButton(
-                                      onPressed: () {},
+                                      onPressed: _show3,
                                       style: ElevatedButton.styleFrom(
                                           primary: Colors.white,
                                           shape: RoundedRectangleBorder(
@@ -240,7 +314,7 @@ class AdminNotify extends StatelessWidget {
                                             width: 2,
                                           )),
                                       child: Text(
-                                        "8:00 am",
+                                        _selectedTime3,
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
                                             color: Colors.black,
@@ -257,9 +331,12 @@ class AdminNotify extends StatelessWidget {
                                   toggleSize: 20.0,
                                   borderRadius: 20.0,
                                   activeColor: Colors.green,
-                                  value: false,
+                                  value: isChecked2,
                                   onToggle: (value) {
-                                    print("click");
+                                    print(value);
+                                    setState(() {
+                                      isChecked2 = value;
+                                    });
                                   },
                                 ),
 
@@ -368,11 +445,11 @@ class AdminNotify extends StatelessWidget {
                                           child: Container(child: Text('Agregar Alarma'))),
                                     ),
                                     onTap: () {
-                                      Navigator.of(context).push(
-                                        MaterialPageRoute(
-                                          builder: (context) => PlanNutrition(),
-                                        ),
-                                      );
+                                      // Navigator.of(context).push(
+                                      //   MaterialPageRoute(
+                                      //     builder: (context) => PlanNutrition(),
+                                      //   ),
+                                      // );
                                     },
                                   )
                                 ],

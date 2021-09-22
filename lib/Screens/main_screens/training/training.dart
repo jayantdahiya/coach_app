@@ -1,7 +1,6 @@
 import 'package:calendar_timeline/calendar_timeline.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:coach_app/Screens/main_screens/bottom_bar.dart';
-import 'package:coach_app/Screens/main_screens/home/home_screen.dart';
-import 'package:coach_app/widget/calendar_strip.dart';
 import 'package:coach_app/widget/training_tile.dart';
 import 'package:coach_app/widget/video_tile.dart';
 import 'package:flutter/material.dart';
@@ -72,7 +71,7 @@ class Training extends StatelessWidget {
           child: Column(
             children: [
               Padding(
-                padding: const EdgeInsets.all(13.0),
+                padding: const EdgeInsets.all(8.0),
                 child: SizedBox(
                   width: MediaQuery.of(context).size.width,
                   child: Row(
@@ -156,10 +155,59 @@ class Training extends StatelessWidget {
                 activeBackgroundDayColor: Colors.redAccent[100],
                 dotsColor: Color(0xFF333A47),
                 //selectableDayPredicate: (date) => date.day != 23,
-                //locale: 'en_ISO',
+                locale: 'en_ISO',
               ),
               SizedBox(
-                height: 23,
+                height: 20,
+              ),
+              Text('Selecciona tu lugar de entrenamiento', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 28.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    ElevatedButton(
+                      onPressed: () {
+
+                      },
+                      child: Text(
+                        "En CASA",
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 20,
+                        ),
+                      ),
+                      style: ElevatedButton.styleFrom(
+                        minimumSize: Size(180, 40),
+                          primary: Colors.white,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(15)),
+                          side: BorderSide(
+                            color: Color(0xff79dd72),
+                            width: 3,
+                          )),
+                    ),
+                    ElevatedButton(
+                      onPressed: () {},
+                      child: Text(
+                        "EN GYM",
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 20,
+                        ),
+                      ),
+                      style: ElevatedButton.styleFrom(
+                        minimumSize: Size(180, 40),
+                        primary: Color(0xff79dd72),
+                        shape: new RoundedRectangleBorder(
+                          borderRadius: new BorderRadius.circular(30.0),
+                        ),
+                        padding: EdgeInsets.symmetric(
+                            horizontal: 50, vertical: 10),
+                      ),
+                    ),
+                  ],
+                ),
               ),
               SizedBox(
                 width: MediaQuery.of(context).size.width,

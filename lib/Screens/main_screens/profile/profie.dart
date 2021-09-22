@@ -1,6 +1,7 @@
-import 'package:coach_app/Screens/main_screens/profile/adminnotification.dart';
 import 'package:coach_app/Screens/main_screens/profile/gallery.dart';
-import 'package:coach_app/Screens/main_screens/profile/plan.dart';
+import 'package:coach_app/Screens/main_screens/profile/manage_notifications.dart';
+import 'package:coach_app/Screens/main_screens/profile/modification_subscription.dart';
+import 'package:coach_app/Screens/main_screens/profile/plan_nutrition.dart';
 import 'package:coach_app/Screens/main_screens/profile/setting.dart';
 import 'package:coach_app/services/auth_service.dart';
 import 'package:coach_app/widget/profile_tile.dart';
@@ -11,7 +12,6 @@ import 'package:flutter/rendering.dart';
 import 'package:provider/provider.dart';
 
 import '../../../custom_icons_icons.dart';
-import 'modification.dart';
 
 class Profile extends StatelessWidget {
   const Profile({Key? key}) : super(key: key);
@@ -84,14 +84,14 @@ class Profile extends StatelessWidget {
                                     fontSize: 22,
                                     fontWeight: FontWeight.w800),
                                 children: [
-                                  TextSpan(
-                                    text: 'PERFIL',
-                                    style: TextStyle(
-                                        color: Color(0xff6EAD7A),
-                                        fontSize: 22,
-                                        fontWeight: FontWeight.w800),
-                                  )
-                                ])),
+                              TextSpan(
+                                text: 'PERFIL',
+                                style: TextStyle(
+                                    color: Color(0xff6EAD7A),
+                                    fontSize: 22,
+                                    fontWeight: FontWeight.w800),
+                              )
+                            ])),
                         Icon(
                           CustomIcons.profile_edit,
                           size: 28,
@@ -158,12 +158,12 @@ class Profile extends StatelessWidget {
                     Text(
                       'País',
                       style:
-                      TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+                          TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
                     ),
                     Text(
                       'México',
                       style:
-                      TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+                          TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
                     ),
                   ],
                 ),
@@ -177,7 +177,7 @@ class Profile extends StatelessWidget {
                   onTap: () {
                     Navigator.of(context).push(
                       MaterialPageRoute(
-                        builder: (context) => AdminNotify(),
+                        builder: (context) => ManageNotifications(),
                       ),
                     );
                   },
@@ -210,7 +210,7 @@ class Profile extends StatelessWidget {
                   onTap: () {
                     Navigator.of(context).push(
                       MaterialPageRoute(
-                        builder: (context) => Modification(),
+                        builder: (context) => ModificationSubscription(),
                       ),
                     );
                   },
@@ -245,11 +245,11 @@ class Profile extends StatelessWidget {
                                   child: Container(
                                     child: Row(
                                       mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
+                                          MainAxisAlignment.spaceBetween,
                                       children: [
                                         Container(
                                           child:
-                                          Text("Comentarios y Sugerencias", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
+                                              Text("Comentarios y Sugerencias", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
                                         ),
                                         InkWell(
                                           onTap: () {
@@ -275,8 +275,8 @@ class Profile extends StatelessWidget {
                                     Text('Nos interesa tu opinión'),
                                     Container(
                                       height:
-                                      MediaQuery.of(context).size.height *
-                                          0.2,
+                                          MediaQuery.of(context).size.height *
+                                              0.2,
                                       width: MediaQuery.of(context).size.width *
                                           0.7,
                                       color: Colors.grey,
@@ -333,7 +333,7 @@ class Profile extends StatelessWidget {
                                   child: Container(
                                     child: Row(
                                       mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
+                                          MainAxisAlignment.spaceBetween,
                                       children: [
                                         Container(
                                           child: Text("Reportar un Problema", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
@@ -362,8 +362,8 @@ class Profile extends StatelessWidget {
                                     Text('Cuéntanos ¿Cuál es el problema?'),
                                     Container(
                                       height:
-                                      MediaQuery.of(context).size.height *
-                                          0.2,
+                                          MediaQuery.of(context).size.height *
+                                              0.2,
                                       width: MediaQuery.of(context).size.width *
                                           0.7,
                                       color: Colors.grey,
@@ -383,7 +383,7 @@ class Profile extends StatelessWidget {
                                     ),
                                     child: Center(
                                         child:
-                                        Container(child: Text('Enviar'))),
+                                            Container(child: Text('Enviar'))),
                                   ),
                                   onTap: () {
                                     // Navigator.of(context).push(
@@ -420,7 +420,7 @@ class Profile extends StatelessWidget {
                                   child: Container(
                                     child: Row(
                                       mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
+                                          MainAxisAlignment.spaceBetween,
                                       children: [
                                         Container(
                                           child: Text("Términos y Condiciones", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
@@ -447,8 +447,8 @@ class Profile extends StatelessWidget {
                                   padding: const EdgeInsets.symmetric(horizontal: 12.0),
                                   child: Container(
                                     height:
-                                    MediaQuery.of(context).size.height *
-                                        0.15,
+                                        MediaQuery.of(context).size.height *
+                                            0.15,
                                     width: MediaQuery.of(context).size.width *
                                         0.8,
                                     child: Text(
@@ -470,7 +470,7 @@ class Profile extends StatelessWidget {
                                     ),
                                     child: Center(
                                         child:
-                                        Container(child: Text('Aceptar'))),
+                                            Container(child: Text('Aceptar'))),
                                   ),
                                   onTap: () {
                                     // Navigator.of(context).push(
