@@ -40,7 +40,7 @@ class HomeTile extends StatelessWidget {
                                 title,
                                 style: TextStyle(
                                     color: Colors.black,
-                                    fontSize: 24,
+                                    fontSize: 18,
                                     fontWeight: FontWeight.bold),
                               )
                             ],

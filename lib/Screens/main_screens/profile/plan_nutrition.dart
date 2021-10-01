@@ -320,11 +320,11 @@ class _PlanNutritionState extends State<PlanNutrition> {
                           child: Container(child: Text('Actualizer Objetivo'))),
                     ),
                     onTap: () {
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (context) => Gallery(),
-                        ),
-                      );
+                      // Navigator.of(context).push(
+                      //   MaterialPageRoute(
+                      //     builder: (context) => Gallery(),
+                      //   ),
+                      // );
                     },
                   )
                 ],

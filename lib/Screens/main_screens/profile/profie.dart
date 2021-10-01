@@ -1,10 +1,11 @@
+import 'package:coach_app/Screens/auth/phone_auth.dart';
 import 'package:coach_app/Screens/main_screens/profile/gallery.dart';
 import 'package:coach_app/Screens/main_screens/profile/manage_notifications.dart';
-import 'package:coach_app/Screens/main_screens/profile/modification_subscription.dart';
 import 'package:coach_app/Screens/main_screens/profile/plan_nutrition.dart';
 import 'package:coach_app/Screens/main_screens/profile/setting.dart';
 import 'package:coach_app/services/auth_service.dart';
 import 'package:coach_app/widget/profile_tile.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
@@ -12,9 +13,22 @@ import 'package:flutter/rendering.dart';
 import 'package:provider/provider.dart';
 
 import '../../../custom_icons_icons.dart';
+import 'modification.dart';
 
-class Profile extends StatelessWidget {
+class Profile extends StatefulWidget {
   const Profile({Key? key}) : super(key: key);
+
+  @override
+  State<Profile> createState() => _ProfileState();
+}
+
+class _ProfileState extends State<Profile> {
+  FirebaseAuth _auth = FirebaseAuth.instance;
+
+  void signOut() async{
+    await _auth.signOut();
+    Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => PhoneAuth()), (route) => false);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -210,7 +224,7 @@ class Profile extends StatelessWidget {
                   onTap: () {
                     Navigator.of(context).push(
                       MaterialPageRoute(
-                        builder: (context) => ModificationSubscription(),
+                        builder: (context) => Modification(),
                       ),
                     );
                   },
@@ -238,7 +252,7 @@ class Profile extends StatelessWidget {
                           elevation: 16,
                           child: Container(
                             padding: EdgeInsets.all(10),
-                            height: MediaQuery.of(context).size.height * 0.35,
+                            height: MediaQuery.of(context).size.height * 0.40,
                             child: Column(
                               children: [
                                 Container(
@@ -249,7 +263,7 @@ class Profile extends StatelessWidget {
                                       children: [
                                         Container(
                                           child:
-                                              Text("Comentarios y Sugerencias", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
+                                              Text("Comentarios y Sugerencias", style: TextStyle(fontWeight: FontWeight.bold,)),
                                         ),
                                         InkWell(
                                           onTap: () {
@@ -273,23 +287,26 @@ class Profile extends StatelessWidget {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text('Nos interesa tu opinión'),
+                                    SizedBox(
+                                      height: 20,
+                                    ),
                                     Container(
                                       height:
                                           MediaQuery.of(context).size.height *
                                               0.2,
                                       width: MediaQuery.of(context).size.width *
-                                          0.7,
+                                          0.65,
                                       color: Colors.grey,
                                     ),
                                   ],
                                 ),
                                 SizedBox(
-                                  height: 30,
+                                  height: 20,
                                 ),
                                 InkWell(
                                   child: Container(
                                     height: 30,
-                                    width: 200,
+                                    width: 190,
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(20.0),
                                       color: Colors.green,
@@ -326,7 +343,7 @@ class Profile extends StatelessWidget {
                           elevation: 16,
                           child: Container(
                             padding: EdgeInsets.all(10),
-                            height: MediaQuery.of(context).size.height * 0.35,
+                            height: MediaQuery.of(context).size.height * 0.40,
                             child: Column(
                               children: [
                                 Container(
@@ -336,7 +353,7 @@ class Profile extends StatelessWidget {
                                           MainAxisAlignment.spaceBetween,
                                       children: [
                                         Container(
-                                          child: Text("Reportar un Problema", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
+                                          child: Text("Reportar un Problema", style: TextStyle(fontWeight: FontWeight.bold,)),
                                         ),
                                         InkWell(
                                           onTap: () {
@@ -360,23 +377,26 @@ class Profile extends StatelessWidget {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text('Cuéntanos ¿Cuál es el problema?'),
+                                    SizedBox(
+                                      height: 20,
+                                    ),
                                     Container(
                                       height:
                                           MediaQuery.of(context).size.height *
                                               0.2,
                                       width: MediaQuery.of(context).size.width *
-                                          0.7,
+                                          0.65,
                                       color: Colors.grey,
                                     ),
                                   ],
                                 ),
                                 SizedBox(
-                                  height: 30,
+                                  height: 20,
                                 ),
                                 InkWell(
                                   child: Container(
                                     height: 30,
-                                    width: 200,
+                                    width: 190,
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(20.0),
                                       color: Colors.green,
@@ -413,7 +433,7 @@ class Profile extends StatelessWidget {
                           elevation: 16,
                           child: Container(
                             padding: EdgeInsets.all(10),
-                            height: MediaQuery.of(context).size.height * 0.3,
+                            height: MediaQuery.of(context).size.height * 0.35,
                             child: Column(
                               children: [
                                 Container(
@@ -423,7 +443,7 @@ class Profile extends StatelessWidget {
                                           MainAxisAlignment.spaceBetween,
                                       children: [
                                         Container(
-                                          child: Text("Términos y Condiciones", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
+                                          child: Text("Términos y Condiciones", style: TextStyle(fontWeight: FontWeight.bold, )),
                                         ),
                                         InkWell(
                                           onTap: () {
@@ -450,10 +470,10 @@ class Profile extends StatelessWidget {
                                         MediaQuery.of(context).size.height *
                                             0.15,
                                     width: MediaQuery.of(context).size.width *
-                                        0.8,
+                                        0.7,
                                     child: Text(
                                       'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex',
-                                      style: TextStyle(fontSize: 22, fontWeight: FontWeight.normal),
+                                      style: TextStyle( fontWeight: FontWeight.normal),
                                     ),
                                   ),
                                 ),
@@ -463,7 +483,7 @@ class Profile extends StatelessWidget {
                                 InkWell(
                                   child: Container(
                                     height: 30,
-                                    width: 200,
+                                    width: 190,
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(20.0),
                                       color: Colors.green,
@@ -510,7 +530,7 @@ class Profile extends StatelessWidget {
                                       MainAxisAlignment.spaceBetween,
                                       children: [
                                         Container(
-                                          child: Text("Políticas de Privacidad", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),),
+                                          child: Text("Políticas de Privacidad", style: TextStyle(fontWeight: FontWeight.bold, ),),
                                         ),
                                         InkWell(
                                           onTap: () {
@@ -537,10 +557,10 @@ class Profile extends StatelessWidget {
                                     MediaQuery.of(context).size.height *
                                         0.15,
                                     width: MediaQuery.of(context).size.width *
-                                        0.8,
+                                        0.7,
                                     child: Text(
                                       'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex',
-                                      style: TextStyle(fontSize: 22, fontWeight: FontWeight.normal),
+                                      style: TextStyle( fontWeight: FontWeight.normal),
                                     ),
                                   ),
                                 ),
@@ -556,9 +576,7 @@ class Profile extends StatelessWidget {
                 height: 40,
               ),
               ElevatedButton(
-                onPressed: () async {
-                  await authService.signOut();
-                },
+                onPressed: signOut,
                 child: Text(
                   'CERRAR SESIÓN',
                   style: TextStyle(

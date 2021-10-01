@@ -118,31 +118,6 @@ class Training extends StatelessWidget {
                   ),
                 ),
               ),
-              // Container(
-              //   child: SingleChildScrollView(
-              //     scrollDirection: Axis.horizontal,
-              //     child: Row(
-              //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              //       children: [
-              //         CalendarStrip(16, "Lu", true),
-              //         CalendarStrip(17, "Ma", false),
-              //         CalendarStrip(18, "Mi", false),
-              //         CalendarStrip(19, "Ju", false),
-              //         CalendarStrip(20, "Vi", false),
-              //         CalendarStrip(21, "Sa", false),
-              //         CalendarStrip(22, "Do", false),
-              //         CalendarStrip(23, "Do", false),
-              //         CalendarStrip(24,"Ma", false),
-              //         CalendarStrip(25,"Mi", false),
-              //         CalendarStrip(26,"Ju", false),
-              //         CalendarStrip(27,"Vi", false),
-              //         CalendarStrip(28,"Sa", false),
-              //         CalendarStrip(29,"Do", false),
-              //         CalendarStrip(30,"Lu", false),
-              //       ],
-              //     ),
-              //   ),
-              // ),
               CalendarTimeline(
                 initialDate: DateTime.now(),
                 firstDate: DateTime(2019, 1, 15),
@@ -155,7 +130,7 @@ class Training extends StatelessWidget {
                 activeBackgroundDayColor: Colors.redAccent[100],
                 dotsColor: Color(0xFF333A47),
                 //selectableDayPredicate: (date) => date.day != 23,
-                locale: 'en_ISO',
+                locale: 'es_MX',
               ),
               SizedBox(
                 height: 20,
@@ -271,50 +246,50 @@ class Training extends StatelessWidget {
               ),
               Expanded(
                 child: SingleChildScrollView(
-                  child: Column(
-                    children: [
-                      InkWell(
-                          onTap: () {
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => VideoTile(
-                                      ytid: 'T9dJ_cE5Asw',
-                                      text: "Sentadillas",
-                                      text1: "6-8 resps",
-                                      text2: 'rest 30"',
-                                      text3: "4 sets",
-                                    )));
-                          },
-                          child: TrainingTile(
-                            alpha1: 'A1',
-                            alpha2: 'A2',
-                            text: 'Sentadillas',
-                            text1: '6-8 resps',
-                            text2: 'rest 30”',
-                            text3: '4 sets',
-                            texta: 'Desplantes',
-                          )),
-                      InkWell(
-                          onTap: () {
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => VideoTile(
-                                      ytid: 'T9dJ_cE5Asw',
-                                      text: "Sentadillas",
-                                      text1: "6-8 resps",
-                                      text2: 'rest 30"',
-                                      text3: "4 sets",
-                                    )));
-                          },
-                          child: TrainingTile(
-                            alpha1: 'B1',
-                            alpha2: 'B2',
-                            text: 'ABS',
-                            text1: '6-8 resps',
-                            text2: 'rest 30”',
-                            text3: '4 sets',
-                            texta: 'Tijeras',
-                          )),
-                    ],
-                  ),
+                  // child: Column(
+                  //   children: [
+                  //     InkWell(
+                  //         onTap: () {
+                  //           Navigator.of(context).push(MaterialPageRoute(
+                  //               builder: (context) => VideoTile(
+                  //                     ytid: 'T9dJ_cE5Asw',
+                  //                     text: "Sentadillas",
+                  //                     text1: "6-8 resps",
+                  //                     text2: 'rest 30"',
+                  //                     text3: "4 sets",
+                  //                   )));
+                  //         },
+                  //         child: TrainingTile(
+                  //           alpha1: 'A1',
+                  //           alpha2: 'A2',
+                  //           text: 'Sentadillas',
+                  //           text1: '6-8 resps',
+                  //           text2: 'rest 30”',
+                  //           text3: '4 sets',
+                  //           texta: 'Desplantes',
+                  //         )),
+                  //     InkWell(
+                  //         onTap: () {
+                  //           Navigator.of(context).push(MaterialPageRoute(
+                  //               builder: (context) => VideoTile(
+                  //                     ytid: 'T9dJ_cE5Asw',
+                  //                     text: "Sentadillas",
+                  //                     text1: "6-8 resps",
+                  //                     text2: 'rest 30"',
+                  //                     text3: "4 sets",
+                  //                   )));
+                  //         },
+                  //         child: TrainingTile(
+                  //           alpha1: 'B1',
+                  //           alpha2: 'B2',
+                  //           text: 'ABS',
+                  //           text1: '6-8 resps',
+                  //           text2: 'rest 30”',
+                  //           text3: '4 sets',
+                  //           texta: 'Tijeras',
+                  //         )),
+                  //   ],
+                  // ),
                 ),
               )
             ],
